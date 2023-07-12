@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pay Calculator</title>
+    <style>
+        /* CSS styles for the calculator */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            margin: 20px auto;
+            width: 300px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        select, input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            padding: 10px;
+        }
+        
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pay Calculator</h2>
+        
+        <label for="payScale">Pay Scale:</label>
+        <select id="payScale">
+            <option value="10">Pay Scale 1</option>
+            <option value="15">Pay Scale 2</option>
+            <option value="20">Pay Scale 3</option>
+        </select>
+        
+        <label for="averageIncidents">Average Incidents:</label>
+        <input type="number" id="averageIncidents" min="0" step="1">
+        
+        <button onclick="calculatePay()">Calculate</button>
+        
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        // JavaScript logic for the calculator
+        function calculatePay() {
+            var payScaleSelect = document.getElementById("payScale");
+            var averageIncidentsInput = document.getElementById("averageIncidents");
+            var resultDiv = document.getElementById("result");
+            
+            var payScale = parseFloat(payScaleSelect.value);
+            var averageIncidents = parseInt(averageIncidentsInput.value);
+            
+            var averagePay = payScale * averageIncidents;
+            
+            resultDiv.textContent = "Average Pay: €" + averagePay.toFixed(2);
+        }
+    </script>
+</body>
+</html>
